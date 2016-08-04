@@ -21,5 +21,4 @@ CREATE TABLE aws.aws_billing_reports_detailed(
 	UnBlendedRate varchar(50) NULL,
 	UnBlendedCost varchar(50) NULL,
 	ResourceId varchar(max) NULL,
-	user Name varchar(max) NULL
-) ON aws
+	user Name varchar(max) NULL) ON aws;
