@@ -17,11 +17,11 @@ CREATE TABLE aws.aws_billing_reports_detailed(
 	ItemDescription varchar(1024) NULL,
 	UsageStartDate datetime NULL,
 	UsageEndDate datetime NULL,
-	UsageQuantity numeric NULL,
-	BlendedRate numeric NULL,
-	BlendedCost numeric NULL,
-	UnBlendedRate numeric NULL,
-	UnBlendedCost numeric NULL,
+	UsageQuantity numeric(18,4) NULL,
+	BlendedRate numeric(18,4) NULL,
+	BlendedCost numeric(18,4) NULL,
+	UnBlendedRate numeric(18,4) NULL,
+	UnBlendedCost numeric(18,4) NULL,
 	ResourceId varchar(255) NULL,
 	userName varchar(512) NULL
 ) ON aws
