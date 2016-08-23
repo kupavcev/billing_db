@@ -34,3 +34,14 @@ create index aws_billing_reports_detailed_UsageStartDate  on aws.aws_billing_rep
 create index aws_billing_reports_detailed_UsageEndDate  on aws.aws_billing_reports_detailed(UsageEndDate);
 create index aws_billing_reports_detailed_userName  on aws.aws_billing_reports_detailed(userName);
 --create index aws_billing_reports_detailed_  on aws.aws_billing_reports_detailed( );
+
+create table aws.aws_instances(
+	id int primary key IDENTITY(1,1),
+	instanceId varchar(255) not null,
+	instanceTag varchar(1024)not null) on aws;
+create index aws_instances_instanceId on aws.aws_instances(instanceId);
+
+create table aws.aws_volumes(
+	id int primary key IDENTITY(1,1),
+	volumeId varchar(255) not null) on aws;
+create index aws_volumes_volumeId on aws.aws_volumes(volumeId);
