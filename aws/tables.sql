@@ -45,3 +45,10 @@ create table aws.aws_volumes(
 	id int primary key IDENTITY(1,1),
 	volumeId varchar(255) not null) on aws;
 create index aws_volumes_volumeId on aws.aws_volumes(volumeId);
+
+create table aws.aws_instances_volumes(
+	id int  primary key IDENTITY(1,1),
+	ddate datetime not null,
+	insId int not null references aws.aws_instances(id),
+	volId int not null references aws.aws_volumes(id)) on aws;
+create unique index aws_instances_volumes_ddate_insId_volId on aws.aws_instances_volumes(ddate,insId,volId);
