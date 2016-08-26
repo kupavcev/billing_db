@@ -34,6 +34,7 @@ select ResourceId, userName, sum(BlendedCost) from aws.aws_billing_reports_detai
 
 select 
 	(select instanceId from aws.aws_instances where id=insId) as InstanceId,
+	(select instanceTag from aws.aws_instances where id=insId) as InstanceTag,
 	(select volumeId from aws.aws_volumes where id=volId) as VolumeId,
 	(select sum_BlendedCost from #aws_costs 
 	where #aws_costs.ResourceId = isnull((select volumeId from aws.aws_volumes where id=volId),
