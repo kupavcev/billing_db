@@ -26,7 +26,7 @@ BULK INSERT #aws_instance_volumes_tmp
     (
     FIRSTROW = 2,
     FIELDTERMINATOR = ';|;',  --CSV field delimiter
-    ROWTERMINATOR = '0x0a',   --Use to shift the control to next row
+    ROWTERMINATOR = '0x0d0a',   --Use to shift the control to next row
     ERRORFILE = 'C:\AWS_Billing_Reports\Data\aws_instance_info_nc.txt.err'--,
     );	
 
