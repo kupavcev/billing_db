@@ -33,11 +33,11 @@ select ResourceId, userName, sum(BlendedCost) from aws.aws_billing_reports_detai
 	having sum(BlendedCost)>@scale;
 
 select 
-	(select instanceId from aws.aws_instances where id=insId),
-	(select volumeId from aws.aws_volumes where id=volId),
+	(select instanceId from aws.aws_instances where id=insId) as InstanceId,
+	(select volumeId from aws.aws_volumes where id=volId) as VolumeId,
 	(select sum_BlendedCost from #aws_costs 
 	where #aws_costs.ResourceId = isnull((select volumeId from aws.aws_volumes where id=volId),
-										(select instanceId from aws.aws_instances where id=insId)))
+										(select instanceId from aws.aws_instances where id=insId))) as Cost
 
 from #aws_instances_volumes_virtual order by insId,volId;
 
