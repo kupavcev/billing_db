@@ -33,7 +33,7 @@ BULK INSERT #aws_instance_volumes_tmp
 --truncate table aws.aws_instances;
 insert into aws.aws_instances(instanceId,instanceTag)
 select distinct instanceId, instanceTag from #aws_instance_volumes_tmp
-where instanceId not in(select instanceId from #aws_instance_volumes_tmp);
+where instanceId not in(select instanceId from aws.aws_instances);
 
 update aws.aws_instances set aws.aws_instances.instanceTag=#aws_instance_volumes_tmp.instanceTag
 from #aws_instance_volumes_tmp
@@ -42,7 +42,7 @@ where aws.aws_instances.instanceId=#aws_instance_volumes_tmp.instanceId and aws.
 --truncate table aws.aws_volumes;
 insert into aws.aws_volumes(volumeId)
 select distinct volumeId from #aws_instance_volumes_tmp
-where volumeId not in(select volumeId from #aws_instance_volumes_tmp);
+where volumeId not in(select volumeId from aws.aws_volumes);
 
 delete from aws.aws_instances_volumes where ddate=@ddate;
 
@@ -54,3 +54,9 @@ join aws.aws_volumes on #aws_instance_volumes_tmp.volumeId=aws.aws_volumes.volum
 
 drop table #aws_instance_volumes_tmp;
 end;
+
+/*
+truncate table aws.aws_instances_volumes;
+delete from aws.aws_instances;
+delete from aws.aws_volumes;
+*/
