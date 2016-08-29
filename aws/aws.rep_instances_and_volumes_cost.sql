@@ -1,12 +1,12 @@
 drop procedure  aws.rep_instances_and_volumes_cost;
 go
-create procedure aws.rep_instances_and_volumes_cost(@billing_date datetime)
+create procedure aws.rep_instances_and_volumes_cost(@ddate datetime)
 as
 begin
 set dateformat dmy;
 declare @year varchar(50), @month varchar(50);
 declare @fname varchar(2048);
-declare @ddate datetime;
+--declare @ddate datetime;
 
 set @year=year(@billing_date);
 set @month=month(@billing_date);
