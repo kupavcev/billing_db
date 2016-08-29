@@ -14,7 +14,7 @@ if month(@ddate)<10
 	set @month='0'+@month;
 set @ddate='01.'+@month+'.'+@year;
 
-select ResourceId as ResourceId, userName as Tag, ItemDescription as rDescription, sum(BlendedCost) as Cost from aws.aws_billing_reports_detailed
+select ItemDescription as rDescription, sum(BlendedCost) as Cost from aws.aws_billing_reports_detailed
 	where LinkedAccountId='470567614800' and billing_date=@ddate and ResourceId is null and ItemDescription <> 'Total for linked account# 470567614800'
 	group by ResourceId, userName, ItemDescription
 	having sum(BlendedCost)>0
