@@ -6,7 +6,6 @@ begin
 -- set dateformat ymd
 -- declare @ddate datetime = '2016-07-01';
 declare @scale int;
-set @ddate='2016-07-01';
 set @scale=-1;
 
 create table #aws_instances_volumes_virtual(
