@@ -8,9 +8,9 @@ declare @year varchar(50), @month varchar(50);
 declare @fname varchar(2048);
 --declare @ddate datetime;
 
-set @year=year(@billing_date);
-set @month=month(@billing_date);
-if month(@billing_date)<10  
+set @year=year(@ddate);
+set @month=month(@ddate);
+if month(@ddate)<10  
 	set @month='0'+@month;
 set @ddate='01.'+@month+'.'+@year;
 
