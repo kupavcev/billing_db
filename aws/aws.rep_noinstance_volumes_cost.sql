@@ -15,7 +15,7 @@ if month(@ddate)<10
 set @ddate='01.'+@month+'.'+@year;
 
 
-select ResourceId,ItemDescription,username,sum(BlendedCost) 
+select ResourceId as volumeId,ItemDescription as rDescription,username as volumeTag,sum(BlendedCost) as Cost 
 from aws.aws_billing_reports_detailed
 	where LinkedAccountId='470567614800' and billing_date=@ddate 
 	--and ResourceId is null 
