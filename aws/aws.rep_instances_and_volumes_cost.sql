@@ -35,10 +35,10 @@ select insId, volId from aws.aws_instances_volumes where ddate=@ddate;
 
 
 insert into #aws_costs(ResourceId, userName, sum_BlendedCost)
-select ResourceId, userName, sum(BlendedCost) from aws.aws_billing_reports_detailed
+select ResourceId, userName, sum(unBlendedCost) from aws.aws_billing_reports_detailed
 	where LinkedAccountId='470567614800' and billing_date=@ddate
 	group by ResourceId, userName
-	having sum(BlendedCost)>@scale;
+	having sum(unBlendedCost)>@scale;
 
 select 
 	(select instanceId from aws.aws_instances where id=insId) as InstanceId,
